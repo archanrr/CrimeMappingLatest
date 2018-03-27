@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_crimemap"
+        android:icon="@drawable/fingerprint"
+        android:title="@string/title_crime" />
+
+    <item
+        android:id="@+id/navigation_safemap"
+        android:icon="@drawable/map"
+        android:title="@string/title_safe" />
+
+    <item
+        android:id="@+id/navigation_contacts"
+        android:icon="@drawable/icon"
+        android:title="@string/title_contacts" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/users"
+        android:title="@string/title_profile" />
+
+</menu>

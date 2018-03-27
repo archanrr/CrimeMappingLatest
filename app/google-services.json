@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "404519466704",
+    "firebase_url": "https://crime-mapping-6fa70.firebaseio.com",
+    "project_id": "crime-mapping-6fa70",
+    "storage_bucket": "crime-mapping-6fa70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404519466704:android:d6a100d8991ea784",
+        "android_client_info": {
+          "package_name": "com.hackathon.cyberblue.crimemapping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404519466704-8q7hvf8pb07fq5168fmecuambecomqao.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.cyberblue.crimemapping",
+            "certificate_hash": "b22e602eea0e78c4c440ec3221e04f78075e247a"
+          }
+        },
+        {
+          "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_eSDmP-bbhGV_lFMOZK7zQb31owyXsz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
