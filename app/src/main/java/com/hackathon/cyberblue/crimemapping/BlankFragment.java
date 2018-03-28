@@ -23,6 +23,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -102,18 +103,58 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback,Google
     @Override
     public void onStart() {
         super.onStart();
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot d:dataSnapshot.getChildren())
-//                {
-//                    Crime c=d.getValue(Crime.class);
-//                    location l;
-//                    l=c.loca;
-//
-//                    LatLng location = new LatLng(l.latitude, l.longitude);
-//                    mMap.addMarker(new MarkerOptions().position(location).title(c.description));
-//                }
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot.hasChild("location")) {
+                    for (DataSnapshot poly : dataSnapshot.child("location").getChildren()) {
+                        String id=String.valueOf(poly.child("latitude").getValue());
+                        String name=String.valueOf(poly.child("longitude").getValue());
+                        double lat=Double.parseDouble(id);
+                        double lon=Double.parseDouble(name);
+                        LatLng latLng=new LatLng(lat,lon);
+                        Toast.makeText(getContext(),id+name, Toast.LENGTH_SHORT).show();
+                        mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
+
+
+
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "hiiiiiiiiiiiiiiii", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot.hasChild("location")) {
+                    for (DataSnapshot poly : dataSnapshot.child("location").getChildren()) {
+                        String id=String.valueOf(poly.child("latitude").getValue());
+                        String name=String.valueOf(poly.child("longitude").getValue());
+                        double lat=Double.parseDouble(id);
+                        double lon=Double.parseDouble(name);
+                        LatLng latLng=new LatLng(lat,lon);
+                        Toast.makeText(getContext(),id+name, Toast.LENGTH_SHORT).show();
+                        mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
+
+
+
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "hiiiiiiiiiiiiiiii", Toast.LENGTH_SHORT).show();
+                }
+}
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override

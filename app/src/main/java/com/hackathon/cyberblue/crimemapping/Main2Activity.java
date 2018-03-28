@@ -190,20 +190,13 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
         String namea=name.getText().toString();
 
         Crime c=new Crime(state,crimeType,dats,l,desti,"jj");
-        Toast.makeText(Main2Activity.this,state, Toast.LENGTH_SHORT).show();
-        Toast.makeText(Main2Activity.this, crimeType, Toast.LENGTH_SHORT).show();
-        Toast.makeText(Main2Activity.this, dats, Toast.LENGTH_SHORT).show();
-        Toast.makeText(Main2Activity.this, desti, Toast.LENGTH_SHORT).show();
-        Toast.makeText(Main2Activity.this, namea, Toast.LENGTH_SHORT).show();
 
         databaseReference.push().setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(Main2Activity.this, task.toString()+"hiiiiii", Toast.LENGTH_SHORT).show();
-
                 if(task.isSuccessful())
                {
-                   Toast.makeText(Main2Activity.this, "saved", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(Main2Activity.this, "Sucessfully Submitted", Toast.LENGTH_SHORT).show();
                }
                else
                {

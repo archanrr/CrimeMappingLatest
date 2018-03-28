@@ -10,7 +10,6 @@ public class Crime {
     public location loca;
     Crime()
     {
-
     }
     Crime(String s1,String s2,String s3,location loca1,String description,String name)
     {
