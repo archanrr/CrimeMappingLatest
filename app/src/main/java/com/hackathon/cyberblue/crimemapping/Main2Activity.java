@@ -29,6 +29,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -42,7 +44,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private int[] lat={16,30};
     private int[] lon={80,90};
-    public DatabaseReference databaseReference;
+
 
     public String state,name;
     public String description;
@@ -57,7 +59,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("DETAILS");
+
         //-----------------------------------------------------------------
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         // spinner.setOnItemSelectedListener(this);
@@ -151,6 +153,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
                 Toast.makeText(Main2Activity.this,String.valueOf(latLng), Toast.LENGTH_SHORT).show();
                 saveLat=latLng.latitude;
                 saveLong=latLng.longitude;
+                Toast.makeText(Main2Activity.this,saveLat+","+saveLong,Toast.LENGTH_SHORT).show();
                 mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
 
             }
@@ -174,13 +177,39 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 
 
     public void Enter(View view) {
+        DatabaseReference databaseReference;
+        databaseReference= FirebaseDatabase.getInstance().getReference("Crime/");
+        Toast.makeText(Main2Activity.this, databaseReference.toString(), Toast.LENGTH_SHORT).show();
+
         EditText Des=(EditText)findViewById(R.id.edit);
         EditText name=(EditText)findViewById(R.id.name);
-        Crime c=new Crime(state,crimeType,"LOCATION",Des.toString(),name.toString());
-        Crime c1=new Crime(saveLat,saveLong);
+        EditText dat=(EditText)findViewById(R.id.datepicket);
+        String dats=dat.getText().toString();
+        location l=new location(saveLat,saveLong);
+        String desti=Des.getText().toString();
+        String namea=name.getText().toString();
 
-        databaseReference.child("LOCATION").setValue(c1);
-        Toast.makeText(this, "saved", Toast.LENGTH_SHORT).show();
+        Crime c=new Crime(state,crimeType,dats,l,desti,"jj");
+        Toast.makeText(Main2Activity.this,state, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Main2Activity.this, crimeType, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Main2Activity.this, dats, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Main2Activity.this, desti, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Main2Activity.this, namea, Toast.LENGTH_SHORT).show();
 
+        databaseReference.push().setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(Main2Activity.this, task.toString()+"hiiiiii", Toast.LENGTH_SHORT).show();
+
+                if(task.isSuccessful())
+               {
+                   Toast.makeText(Main2Activity.this, "saved", Toast.LENGTH_SHORT).show();
+               }
+               else
+               {
+                   Toast.makeText(Main2Activity.this, "Failed", Toast.LENGTH_SHORT).show();
+               }
+            }
+        });
     }
 }

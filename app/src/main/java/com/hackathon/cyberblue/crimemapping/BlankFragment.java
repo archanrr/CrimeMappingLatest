@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -22,16 +23,24 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static android.content.ContentValues.TAG;
 
 public class BlankFragment extends Fragment implements OnMapReadyCallback,GoogleMap.OnMyLocationButtonClickListener{
     View v;
     GoogleMap mMap;
+    public DatabaseReference databaseReference;
+    FloatingActionButton fab;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_blank,container,false);
+        fab = (FloatingActionButton)v.findViewById(R.id.fab);
         SupportMapFragment smp = (SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map);
         smp.getMapAsync(this);
         return v;
@@ -40,6 +49,14 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback,Google
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        databaseReference= FirebaseDatabase.getInstance().getReference("Crime");
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),Main2Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -58,18 +75,18 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback,Google
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            Toast.makeText(getContext(),"hi",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(),"hi",Toast.LENGTH_SHORT).show();
             return;
         }
         else
 
         {
-            Toast.makeText(getContext(),"bye",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getContext(),"bye",Toast.LENGTH_SHORT).show();
         }
         mMap.setMyLocationEnabled(true);
         // mMap.setOnMyLocationButtonClickListener((GoogleMap.OnMyLocationButtonClickListener) this);
         // mMap.setOnMyLocationClickListener((OnMyLocationClickListener) this);
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+        /*mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
                 mMap.clear();
@@ -79,7 +96,30 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback,Google
                 mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
 
             }
-        });
+        });*/
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot d:dataSnapshot.getChildren())
+//                {
+//                    Crime c=d.getValue(Crime.class);
+//                    location l;
+//                    l=c.loca;
+//
+//                    LatLng location = new LatLng(l.latitude, l.longitude);
+//                    mMap.addMarker(new MarkerOptions().position(location).title(c.description));
+//                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity  {
     BlankFragment b;
     MapFragment m;
     ProfileFragment p;
+    ContactsFragment c;
     private ActionBar toolbar;
 
     @Override
@@ -31,13 +32,16 @@ public class MainActivity extends AppCompatActivity  {
         b = new BlankFragment();
         m = new MapFragment();
         p = new ProfileFragment();
+        c=new ContactsFragment();
         FragmentTransaction f = getSupportFragmentManager().beginTransaction();
         f.add(R.id.frame_container,b);
         f.add(R.id.frame_container,m);
         f.add(R.id.frame_container,p);
+        f.add(R.id.frame_container,c);
         f.show(b);
         f.hide(m);
         f.hide(p);
+        f.hide(c);
         f.commit();
         toolbar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,6 +65,7 @@ public class MainActivity extends AppCompatActivity  {
                     getSupportFragmentManager().beginTransaction().show(b).commit();
                     getSupportFragmentManager().beginTransaction().hide(m).commit();
                     getSupportFragmentManager().beginTransaction().hide(p).commit();
+                    getSupportFragmentManager().beginTransaction().hide(c).commit();
                     return true;
                 }
                     case R.id.navigation_safemap:
@@ -69,17 +74,20 @@ public class MainActivity extends AppCompatActivity  {
                         getSupportFragmentManager().beginTransaction().show(m).commit();
                         getSupportFragmentManager().beginTransaction().hide(p).commit();
                        // Intent i=new Intent(MainActivity.this,MapsActivity.class);
+                        getSupportFragmentManager().beginTransaction().hide(c).commit();
                     return true;
                 case R.id.navigation_contacts:
                     toolbar.setTitle("Contacts");
                     getSupportFragmentManager().beginTransaction().hide(b).commit();
                     getSupportFragmentManager().beginTransaction().hide(m).commit();
-                    getSupportFragmentManager().beginTransaction().show(p).commit();
+                    getSupportFragmentManager().beginTransaction().hide(p).commit();
+                    getSupportFragmentManager().beginTransaction().show(c).commit();
                     return true;
                 case R.id.navigation_profile:
                     toolbar.setTitle("Profile");
                     getSupportFragmentManager().beginTransaction().hide(b).commit();
                     getSupportFragmentManager().beginTransaction().hide(m).commit();
+                    getSupportFragmentManager().beginTransaction().hide(c).commit();
                     getSupportFragmentManager().beginTransaction().show(p).commit();
                     return true;
 
@@ -91,10 +99,5 @@ public class MainActivity extends AppCompatActivity  {
     /*public void add1(View view) {
         Toast.makeText(MainActivity.this, "Hi", Toast.LENGTH_SHORT).show();
     }*/
-    public void reg(View v1)
-    {
-        Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
-        startActivity(intent);
-    }
 
 }
