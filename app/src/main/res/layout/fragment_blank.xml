@@ -25,5 +25,17 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layerType="software"
+        android:layout_height="wrap_content"
+        android:id="@+id/sos"
+        android:backgroundTint="#fff"
+        android:src="@drawable/sos"
+        android:layout_marginBottom="55dp"
+        android:layout_marginEnd="0dp"
+        android:layout_alignParentBottom="true"
+        />
+
 
 </RelativeLayout>
