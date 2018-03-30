@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Crime Mapping</string>
+    <string name="app_name">W-Protect</string>
     <string name="title_crime">Crime Map</string>
     <string name="title_safe">Safe Map</string>
     <string name="title_contacts">Contacts</string>
@@ -92,10 +92,9 @@
         <item>78.6569° E</item>
     </array>
     <string-array name="crime_arrays">
-        <item>SEXUAL HARASSMENT</item>
-        <item>RAPE</item>
-        <item>DOWRY</item>
-        <item>BULLYING(WOMEN)</item>
+        <item>Sexual Harrasment</item>
+        <item>Rape</item>
+        <item>Dowry</item>
     </string-array>
 
 

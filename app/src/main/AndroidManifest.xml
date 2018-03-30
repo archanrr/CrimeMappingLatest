@@ -22,9 +22,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/nsafe"
+        android:icon="@drawable/wprotectandroidlarge"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/wprotect"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -48,7 +48,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".Main3Activity"></activity>
     </application>
 
 </manifest>

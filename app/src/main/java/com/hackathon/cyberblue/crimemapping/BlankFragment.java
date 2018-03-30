@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +20,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -31,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import static android.content.ContentValues.TAG;
+import static android.content.Context.LOCATION_SERVICE;
 
 public class BlankFragment extends Fragment implements OnMapReadyCallback,GoogleMap.OnMyLocationButtonClickListener{
     View v;
@@ -51,6 +56,7 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback,Google
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         databaseReference= FirebaseDatabase.getInstance().getReference("Crime");
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,8 +89,11 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback,Google
 
         {
            // Toast.makeText(getContext(),"bye",Toast.LENGTH_SHORT).show();
-        }
-        mMap.setMyLocationEnabled(true);
+        } mMap.setMyLocationEnabled(true);
+        LatLng l=new LatLng(22.79851,75.85638);
+        mMap.addMarker(new MarkerOptions().position(l).title("Current Location"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(l,8));
+
         // mMap.setOnMyLocationButtonClickListener((GoogleMap.OnMyLocationButtonClickListener) this);
         // mMap.setOnMyLocationClickListener((OnMyLocationClickListener) this);
         /*mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -103,57 +112,54 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback,Google
     @Override
     public void onStart() {
         super.onStart();
+
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot.hasChild("location")) {
-                    for (DataSnapshot poly : dataSnapshot.child("location").getChildren()) {
-                        String id=String.valueOf(poly.child("latitude").getValue());
-                        String name=String.valueOf(poly.child("longitude").getValue());
-                        double lat=Double.parseDouble(id);
-                        double lon=Double.parseDouble(name);
-                        LatLng latLng=new LatLng(lat,lon);
-                        Toast.makeText(getContext(),id+name, Toast.LENGTH_SHORT).show();
-                        mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
+                String lat= dataSnapshot.child("location").child("latitude").getValue().toString();
+                String lon= dataSnapshot.child("location").child("longitude").getValue().toString();
+                double latitude=Double.valueOf(lat);
+                double longitude=Double.valueOf(lon);
+                LatLng latLng=new LatLng(latitude,longitude);
+                mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,8));
 
 
-
-                    }
-                }
-                else
-                {
-                    Toast.makeText(getContext(), "hiiiiiiiiiiiiiiii", Toast.LENGTH_SHORT).show();
-                }
             }
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot.hasChild("location")) {
-                    for (DataSnapshot poly : dataSnapshot.child("location").getChildren()) {
-                        String id=String.valueOf(poly.child("latitude").getValue());
-                        String name=String.valueOf(poly.child("longitude").getValue());
-                        double lat=Double.parseDouble(id);
-                        double lon=Double.parseDouble(name);
-                        LatLng latLng=new LatLng(lat,lon);
-                        Toast.makeText(getContext(),id+name, Toast.LENGTH_SHORT).show();
-                        mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
 
+                String lat= dataSnapshot.child("location").child("latitude").getValue().toString();
+                String lon= dataSnapshot.child("location").child("longitude").getValue().toString();
+                double latitude=Double.valueOf(lat);
+                double longitude=Double.valueOf(lon);
+                LatLng latLng=new LatLng(latitude,longitude);
+                mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
 
-
-                    }
-                }
-                else
-                {
-                    Toast.makeText(getContext(), "hiiiiiiiiiiiiiiii", Toast.LENGTH_SHORT).show();
-                }
-}
+            }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                String lat= dataSnapshot.child("location").child("latitude").getValue().toString();
+                String lon= dataSnapshot.child("location").child("longitude").getValue().toString();
+                double latitude=Double.valueOf(lat);
+                double longitude=Double.valueOf(lon);
+                LatLng latLng=new LatLng(latitude,longitude);
+                mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
 
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                String lat= dataSnapshot.child("location").child("latitude").getValue().toString();
+                String lon= dataSnapshot.child("location").child("longitude").getValue().toString();
+                double latitude=Double.valueOf(lat);
+                double longitude=Double.valueOf(lon);
+                LatLng latLng=new LatLng(latitude,longitude);
+                mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
 
             }
 
@@ -162,5 +168,20 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback,Google
 
             }
         });
+
     }
+
+
+
+  /*  @Override
+    public void onLocationChanged(Location location)
+    {
+        if( mListener != null )
+        {
+            mListener.onLocationChanged( location );
+
+            //Move the camera to the user's location and zoom in!
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 12.0f));
+        }
+    }*/
 }
