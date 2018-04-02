@@ -8,6 +8,234 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:404519466704:android:92f07e8b2bdc821e",
+        "android_client_info": {
+          "package_name": "com.hackathon.cyberblue.crimeagainstwomen.apivision"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404519466704-uh92be99i6ekdutvvj50pgv9g2p34lhq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.cyberblue.crimeagainstwomen.apivision",
+            "certificate_hash": "70ffc9ea6b32baf5a6903ac36e5d2c68ee7370b7"
+          }
+        },
+        {
+          "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_eSDmP-bbhGV_lFMOZK7zQb31owyXsz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404519466704:android:cacc98be49ff1214",
+        "android_client_info": {
+          "package_name": "com.hackathon.cyberblue.crimeagainstwomen.facevisionapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404519466704-9smn6qmjpqb0k531mbh11mai447ju2ur.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.cyberblue.crimeagainstwomen.facevisionapi",
+            "certificate_hash": "70ffc9ea6b32baf5a6903ac36e5d2c68ee7370b7"
+          }
+        },
+        {
+          "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_eSDmP-bbhGV_lFMOZK7zQb31owyXsz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404519466704:android:68836872729f8ab0",
+        "android_client_info": {
+          "package_name": "com.hackathon.cyberblue.crimeagainstwomenapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404519466704-gmegucv87rguhvd0v28c2u261tvsvkqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.cyberblue.crimeagainstwomenapp",
+            "certificate_hash": "e0781d7ed2c9a506c3a8c674d199364a11f06ad0"
+          }
+        },
+        {
+          "client_id": "404519466704-0hafoan1iqa4vr84ptcv25oeiet6r9oi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.cyberblue.crimeagainstwomenapp",
+            "certificate_hash": "b22e602eea0e78c4c440ec3221e04f78075e247a"
+          }
+        },
+        {
+          "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_eSDmP-bbhGV_lFMOZK7zQb31owyXsz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404519466704:android:200b02f453cabca2",
+        "android_client_info": {
+          "package_name": "com.hackathon.cyberblue.crimeagainstwomenapp.emergencycontacts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404519466704-8dbq9m06p8lnonko3or2n7q1ruvsljs3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.cyberblue.crimeagainstwomenapp.emergencycontacts",
+            "certificate_hash": "6bf1593072d57cfe248c237661202946327dccc0"
+          }
+        },
+        {
+          "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_eSDmP-bbhGV_lFMOZK7zQb31owyXsz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404519466704:android:12a787c4f0947bc0",
+        "android_client_info": {
+          "package_name": "com.hackathon.cyberblue.crimeagainstwomenapp.sos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404519466704-ggbte496evnmtmsnu4hb9ubi9vodd4j6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.cyberblue.crimeagainstwomenapp.sos",
+            "certificate_hash": "6bf1593072d57cfe248c237661202946327dccc0"
+          }
+        },
+        {
+          "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_eSDmP-bbhGV_lFMOZK7zQb31owyXsz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:404519466704:android:d6a100d8991ea784",
         "android_client_info": {
           "package_name": "com.hackathon.cyberblue.crimemapping"
@@ -20,6 +248,50 @@
           "android_info": {
             "package_name": "com.hackathon.cyberblue.crimemapping",
             "certificate_hash": "b22e602eea0e78c4c440ec3221e04f78075e247a"
+          }
+        },
+        {
+          "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_eSDmP-bbhGV_lFMOZK7zQb31owyXsz8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404519466704-kc235v4s2sdjlk7k54esi7eo2bj8rqa1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404519466704:android:c1ee5f755211c58c",
+        "android_client_info": {
+          "package_name": "com.hackathon.cyberblue.googleauth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404519466704-3n1pm8e30mv1n35rbgbif20s2ac73pfg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.cyberblue.googleauth",
+            "certificate_hash": "e0781d7ed2c9a506c3a8c674d199364a11f06ad0"
           }
         },
         {

@@ -12,10 +12,6 @@
         android:title="@string/title_safe" />
 
     <item
-        android:id="@+id/navigation_contacts"
-        android:icon="@mipmap/contacts"
-        android:title="@string/title_contacts" />
-    <item
         android:id="@+id/navigation_profile"
         android:icon="@mipmap/profile"
         android:title="@string/title_profile" />

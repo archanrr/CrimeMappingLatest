@@ -23,7 +23,8 @@
         android:layout_marginBottom="55dp"
         android:layout_marginEnd="0dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"

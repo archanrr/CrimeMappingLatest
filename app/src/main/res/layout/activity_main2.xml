@@ -20,16 +20,6 @@
                 android:prompt="@string/state1"
                 android:entries="@array/state_array"
                 android:layout_margin="10dp"></Spinner>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Name"/>
-
-            </android.support.design.widget.TextInputLayout>
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edit"
-                android:hint="Location"
+                android:hint="About"
                 android:layout_margin="10dp"/>
 
             <fragment
@@ -64,22 +54,6 @@
                 android:text="Victim"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"/>
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Self"
-                    android:id="@+id/self"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="others"
-                    android:id="@+id/others"/>
-            </RadioGroup>
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -98,13 +72,6 @@
                     android:id="@+id/nam"/>
             </RadioGroup>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name of Registee(Optional)"
-                android:id="@+id/name"
-                android:layout_margin="10dp"
-                android:visibility="gone"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

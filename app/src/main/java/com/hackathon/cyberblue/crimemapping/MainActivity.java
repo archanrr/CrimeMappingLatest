@@ -1,5 +1,7 @@
 package com.hackathon.cyberblue.crimemapping;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,10 +12,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import static com.hackathon.cyberblue.crimemapping.R.id.bottom;
 import static com.hackathon.cyberblue.crimemapping.R.id.transition_transform;
@@ -22,7 +31,6 @@ public class MainActivity extends AppCompatActivity  {
     BlankFragment b;
     MapFragment m;
     ProfileFragment p;
-    ContactsFragment c;
     private ActionBar toolbar;
 
     @Override
@@ -32,16 +40,13 @@ public class MainActivity extends AppCompatActivity  {
         b = new BlankFragment();
         m = new MapFragment();
         p = new ProfileFragment();
-        c=new ContactsFragment();
         FragmentTransaction f = getSupportFragmentManager().beginTransaction();
         f.add(R.id.frame_container,b);
         f.add(R.id.frame_container,m);
         f.add(R.id.frame_container,p);
-        f.add(R.id.frame_container,c);
         f.show(b);
         f.hide(m);
         f.hide(p);
-        f.hide(c);
         f.commit();
         toolbar = getSupportActionBar();
 
@@ -63,7 +68,7 @@ public class MainActivity extends AppCompatActivity  {
                     getSupportFragmentManager().beginTransaction().show(b).commit();
                     getSupportFragmentManager().beginTransaction().hide(m).commit();
                     getSupportFragmentManager().beginTransaction().hide(p).commit();
-                    getSupportFragmentManager().beginTransaction().hide(c).commit();
+
                     return true;
                 }
                     case R.id.navigation_safemap:
@@ -72,20 +77,13 @@ public class MainActivity extends AppCompatActivity  {
                         getSupportFragmentManager().beginTransaction().show(m).commit();
                         getSupportFragmentManager().beginTransaction().hide(p).commit();
                        // Intent i=new Intent(MainActivity.this,MapsActivity.class);
-                        getSupportFragmentManager().beginTransaction().hide(c).commit();
-                    return true;
-                case R.id.navigation_contacts:
-                    toolbar.setTitle("Contacts");
-                    getSupportFragmentManager().beginTransaction().hide(b).commit();
-                    getSupportFragmentManager().beginTransaction().hide(m).commit();
-                    getSupportFragmentManager().beginTransaction().hide(p).commit();
-                    getSupportFragmentManager().beginTransaction().show(c).commit();
+
                     return true;
                 case R.id.navigation_profile:
                     toolbar.setTitle("Profile");
                     getSupportFragmentManager().beginTransaction().hide(b).commit();
                     getSupportFragmentManager().beginTransaction().hide(m).commit();
-                    getSupportFragmentManager().beginTransaction().hide(c).commit();
+
                     getSupportFragmentManager().beginTransaction().show(p).commit();
                     return true;
 
@@ -97,5 +95,46 @@ public class MainActivity extends AppCompatActivity  {
     /*public void add1(View view) {
         Toast.makeText(MainActivity.this, "Hi", Toast.LENGTH_SHORT).show();
     }*/
+    public void open(View v)
+    {
+        startActivity(new Intent(getApplicationContext(), register.class));
+    }
+    public void login(View v)
+    {
+        EditText email=(EditText)v.findViewById(R.id.email);
+        EditText pass=(EditText)v.findViewById(R.id.password);
+        String e=email.getText().toString();
+        String p=pass.getText().toString();
+        if(TextUtils.isEmpty(e))
+        {
+            Toast.makeText(getApplicationContext(),"Plz Fill the mail id",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(p))
+        {
+            Toast.makeText(getApplicationContext(),"Plz Fill Password Field", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        final ProgressDialog progess=new ProgressDialog(getApplicationContext());
+        progess.setMessage("Logining in...");
+        progess.show();
+        FirebaseAuth f=FirebaseAuth.getInstance();
+        f.signInWithEmailAndPassword(e, p).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(Task<AuthResult> task) {
+                progess.dismiss();
+                if (task.isSuccessful()) {
+                    //new Acitivity
+
+                    Intent i = new Intent(getApplicationContext(), profile.class);
+                    startActivity(i);
+
+                } else {
+
+                    Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
 }

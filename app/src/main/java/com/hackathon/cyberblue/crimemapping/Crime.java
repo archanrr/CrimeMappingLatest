@@ -5,20 +5,30 @@ package com.hackathon.cyberblue.crimemapping;
  */
 
 public class Crime {
-    public String name,description,state,crimeType,date;
+    public String name,about,state,crime_type,date,email,phone,reliable;
 
-    public location loca;
+    public location location;
     Crime()
     {
     }
-    Crime(String s1,String s2,String s3,location loca1,String description,String name)
+    Crime(String s1,String s2,String s3,location loca1,String description,String name,String reliable)
     {
         this.state=s1;
-        this.crimeType=s2;
+        this.crime_type=s2;
         this.date=s3;
-        this.description=description;
+        this.about=description;
         this.name=name;
-        this.loca=loca1;
+        this.location=loca1;
+        this.reliable=reliable;
+    }
+    Crime(String s1,String s2,String s3,String s4,String s5,location location)
+    {
+        this.state=s1;
+        this.name=s2;
+        this.about=s3;
+        this.email=s4;
+        this.phone=s5;
+        this.location=location;
     }
 
 }

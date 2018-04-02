@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,13 +32,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,GoogleMa
     View v;
     GoogleMap mMap;
     public DatabaseReference databaseReference;
-    FloatingActionButton fab;
+    FloatingActionButton fab1;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_blank,container,false);
-        fab = (FloatingActionButton)v.findViewById(R.id.fab);
-        SupportMapFragment smp = (SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map);
+        v = inflater.inflate(R.layout.fragment_map,container,false);
+        fab1 = (FloatingActionButton)v.findViewById(R.id.fab1);
+        SupportMapFragment smp = (SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map1);
         smp.getMapAsync(this);
         return v;
     }
@@ -45,9 +46,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,GoogleMa
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        databaseReference= FirebaseDatabase.getInstance().getReference("Crime");
+        databaseReference= FirebaseDatabase.getInstance().getReference("SafeArea");
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),Main3Activity.class);
@@ -71,7 +72,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,GoogleMa
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+            // for ActivityCompat#requestPermissiofns for more details.
             //Toast.makeText(getContext(),"hi",Toast.LENGTH_SHORT).show();
             return;
         }
@@ -107,22 +108,26 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,GoogleMa
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String lat= dataSnapshot.child("location").child("latitude").getValue().toString();
-                String lon= dataSnapshot.child("location").child("longitude").getValue().toString();
-                double latitude=Double.valueOf(lat);
-                double longitude=Double.valueOf(lon);
-                LatLng latLng=new LatLng(latitude,longitude);
-                mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,8));
-
+                try {
+                    String lat = dataSnapshot.child("loca").child("latitude").getValue().toString();
+                    String lon = dataSnapshot.child("loca").child("longitude").getValue().toString();
+                    double latitude = Double.valueOf(lat);
+                    double longitude = Double.valueOf(lon);
+                    LatLng latLng = new LatLng(latitude, longitude);
+                    mMap.addMarker(new MarkerOptions().position(latLng).title("TITLE"));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 8));
+                }
+                catch (Exception e){
+                    Log.d("Exception",e.toString());
+                }
 
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                String lat= dataSnapshot.child("location").child("latitude").getValue().toString();
-                String lon= dataSnapshot.child("location").child("longitude").getValue().toString();
+                String lat= dataSnapshot.child("loca").child("latitude").getValue().toString();
+                String lon= dataSnapshot.child("loca").child("longitude").getValue().toString();
                 double latitude=Double.valueOf(lat);
                 double longitude=Double.valueOf(lon);
                 LatLng latLng=new LatLng(latitude,longitude);
@@ -133,8 +138,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,GoogleMa
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                String lat= dataSnapshot.child("location").child("latitude").getValue().toString();
-                String lon= dataSnapshot.child("location").child("longitude").getValue().toString();
+                String lat= dataSnapshot.child("loca").child("latitude").getValue().toString();
+                String lon= dataSnapshot.child("loca").child("longitude").getValue().toString();
                 double latitude=Double.valueOf(lat);
                 double longitude=Double.valueOf(lon);
                 LatLng latLng=new LatLng(latitude,longitude);
@@ -145,8 +150,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,GoogleMa
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                String lat= dataSnapshot.child("location").child("latitude").getValue().toString();
-                String lon= dataSnapshot.child("location").child("longitude").getValue().toString();
+                String lat= dataSnapshot.child("loca").child("latitude").getValue().toString();
+                String lon= dataSnapshot.child("loca").child("longitude").getValue().toString();
                 double latitude=Double.valueOf(lat);
                 double longitude=Double.valueOf(lon);
                 LatLng latLng=new LatLng(latitude,longitude);

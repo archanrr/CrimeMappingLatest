@@ -42,8 +42,6 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
         /*OnMyLocationClickListener*/{
 
     private GoogleMap mMap;
-    private int[] lat={16,30};
-    private int[] lon={80,90};
 
 
     public String state,name;
@@ -105,9 +103,9 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
                 state=String.valueOf(spinner.getSelectedItem());
                 mMap.clear();
                 Toast.makeText(Main2Activity.this, String.valueOf(spinner.getSelectedItem()), Toast.LENGTH_SHORT).show();
-                LatLng sydney = new LatLng(lat[position], lon[position]);
+                LatLng sydney = new LatLng(22.79851,75.85638);
 
-                mMap.addMarker(new MarkerOptions().position(sydney).title(String.valueOf(spinner.getSelectedItem())));
+                mMap.addMarker(new MarkerOptions().position(sydney));
                 float zoomLevel = 10.0f; //This goes up to 21
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoomLevel));
 
@@ -182,14 +180,14 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
         Toast.makeText(Main2Activity.this, databaseReference.toString(), Toast.LENGTH_SHORT).show();
 
         EditText Des=(EditText)findViewById(R.id.edit);
-        EditText name=(EditText)findViewById(R.id.name);
+        //EditText name=(EditText)findViewById(R.id.name);
         EditText dat=(EditText)findViewById(R.id.datepicket);
         String dats=dat.getText().toString();
         location l=new location(saveLat,saveLong);
         String desti=Des.getText().toString();
-        String namea=name.getText().toString();
+        //String namea=name.getText().toString();
 
-        Crime c=new Crime(state,crimeType,dats,l,desti,"jj");
+        Crime c=new Crime(state,crimeType,dats,l,desti,"null","no");
 
         databaseReference.push().setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
